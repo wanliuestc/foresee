@@ -119,3 +119,11 @@
 
 (boldify-names)
   
+(setq my-name "changwanli")
+(defun my-func()
+  (interactive)
+  (message "hello, %s" my-name))
+
+(my-func)
+
+(global-set-key (kbd "<f3>") my-func)

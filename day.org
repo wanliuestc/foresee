@@ -1,0 +1,39 @@
+* Install Emacs
+** go over the emacs tutorial
+- c-h
+- c-g
+- global-line-mode
+- c-h k c-h v c-h f
+- global-set-key
+- inhabit-startup-screen
+- company mode package-initialize global-company-mode t
+- Major mode minor mode(c-h m)
+- setq setq-default 
+** files some amoying stuff
+- eval-buf
+- make-backup-files
+  #c-c ' <s tab
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'emacs-lisp-mode-hook 'show-paren-mode)
+  (global-hl-line-mode t)
+#+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (require 'cl)
+  (defvar wanli/package '(company
+                          monokai-theme
+  
+                                  ) "Default packages")
+  
+  (defun wanli/packages-installed-p()
+    (loop for pkg in wanli/package
+          when(not (package-installed-p pkg)) do (return nil)
+          finally (return t)))
+          
+  (unless (wanli/packages-installed-p)
+    (message "%s" "Refreshing package database...")
+    (package-refresh-contents)
+    (dolist (pkg wanli/package)
+      (when (not (package-installed-p pkg)) 
+        (package-install pkg))))
+  
+#+END_SRC
