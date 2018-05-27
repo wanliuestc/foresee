@@ -37,3 +37,9 @@
         (package-install pkg))))
   
 #+END_SRC
+- ncurses-devel
+- find-function
+- find-variable
+- find-function-on-key
+** TODO sf C-c s C-c d
+   DEADLINE: <2018-06-03 日> SCHEDULED: <2018-06-01 五>
